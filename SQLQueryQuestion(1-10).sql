@@ -40,3 +40,16 @@ this Employee (Steven Buchanan) is 5.
 
 SELECT * FROM dbo.Orders
 WHERE EmployeeID = 5;
+
+/*
+6. In the Suppliers table, show the SupplierID, ContactName, and
+ContactTitle for those Suppliers whose ContactTitle is not Marketing
+Manager.
+*/
+
+SELECT
+	SupplierID,
+	ContactName,
+	ContactTitle
+FROM dbo.Suppliers
+WHERE ContactTitle != 'Marketing Manager'; -- WHERE ContactTitle <> 'Marketing Manager';
