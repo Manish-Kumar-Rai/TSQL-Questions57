@@ -53,3 +53,14 @@ SELECT
 	ContactTitle
 FROM dbo.Suppliers
 WHERE ContactTitle != 'Marketing Manager'; -- WHERE ContactTitle <> 'Marketing Manager';
+
+/*
+7. In the products table, we’d like to see the ProductID and ProductName
+for those products where the ProductName includes the string “queso”
+*/
+
+SELECT
+	ProductID,
+	ProductName
+FROM dbo.Products
+WHERE ProductName LIKE '%queso%';
