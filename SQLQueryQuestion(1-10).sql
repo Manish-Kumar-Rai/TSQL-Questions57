@@ -3,3 +3,7 @@
 -- 1. Which shippers do we have?
 
 Select * From dbo.Shippers;
+
+-- 2. Certain fields from Categories?
+
+Select CategoryName,[Description] FROM dbo.Categories;
