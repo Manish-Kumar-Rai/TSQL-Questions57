@@ -64,3 +64,16 @@ SELECT
 	ProductName
 FROM dbo.Products
 WHERE ProductName LIKE '%queso%';
+
+/*
+8. Looking at the Orders table, there’s a field called ShipCountry. Write a
+query that shows the OrderID, CustomerID, and ShipCountry for the
+orders where the ShipCountry is either France or Belgium.
+*/
+
+SELECT
+	OrderID,
+	CustomerID,
+	ShipCountry
+FROM dbo.Orders
+WHERE ShipCountry IN('France','Belgium'); -- WHERE ShipCountry = 'France' OR WHERE ShipCountry = 'Belgium'
