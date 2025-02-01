@@ -67,3 +67,14 @@ ORDER BY OrderDate;
 SELECT
 	MIN(CONVERT(DATE,OrderDate)) AS FirstOrderDate
 FROM dbo.Orders;
+
+/*
+16. Show a list of countries where the Northwind company has customers.
+*/
+
+SELECT DISTINCT Country FROM dbo.Customers;
+
+SELECT
+	Country
+FROM dbo.Customers
+GROUP BY Country;
