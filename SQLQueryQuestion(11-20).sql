@@ -41,3 +41,15 @@ SELECT
 	Quantity,
 	(UnitPrice * Quantity) AS TotalPrice
 FROM dbo.OrderDetails;
+
+/*
+14. How many customers do we have in the Customers table? Show one
+value only, and don’t rely on getting the recordcount at the end of a
+resultset.
+*/
+
+SELECT COUNT(CustomerID) AS TotalCustomers FROM dbo.Customers;
+
+SELECT
+	SUM(CASE WHEN CustomerID IS NOT NULL THEN 1 ELSE 0 END) AS TotalCustomers
+FROM dbo.Customers;
