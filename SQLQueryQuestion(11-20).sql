@@ -127,3 +127,18 @@ LEFT JOIN dbo.Shippers AS S
 	ON O.ShipVia = S.ShipperID
 WHERE OrderID < 10300
 ORDER BY OrderID;
+
+/*
+20. For this problem, we’d like to see the total number of products in each
+category. Sort the results by the total number of products, in descending
+order.
+*/
+
+SELECT
+	C.CategoryName,
+	Count(*) AS TotalProducts
+FROM dbo.Products AS P
+LEFT JOIN dbo.Categories AS C
+	ON P.CategoryID = C.CategoryID
+GROUP BY C.CategoryName
+ORDER BY TotalProducts DESC;
