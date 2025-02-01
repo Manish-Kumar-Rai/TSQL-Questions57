@@ -53,3 +53,17 @@ SELECT COUNT(CustomerID) AS TotalCustomers FROM dbo.Customers;
 SELECT
 	SUM(CASE WHEN CustomerID IS NOT NULL THEN 1 ELSE 0 END) AS TotalCustomers
 FROM dbo.Customers;
+
+/*
+15. Show the date of the first order ever made in the Orders table.
+*/
+
+SELECT
+	TOP (1)
+	CONVERT(DATE,OrderDate) AS OrderDate
+FROM dbo.Orders
+ORDER BY OrderDate;
+
+SELECT
+	MIN(CONVERT(DATE,OrderDate)) AS FirstOrderDate
+FROM dbo.Orders;
