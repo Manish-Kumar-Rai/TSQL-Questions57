@@ -97,3 +97,18 @@ SELECT
 FROM dbo.Orders
 GROUP BY ShipCountry
 ORDER BY AVG(Freight) DESC;
+
+/*
+26. We're continuing on the question above on high freight charges. Now,
+instead of using all the orders we have, we only want to see orders from
+the year 2015.
+*/
+
+SELECT
+	TOP 3
+	ShipCountry,
+	AVG(Freight) AS Avg_Freight
+FROM dbo.Orders
+WHERE YEAR(OrderDate) = 2015
+GROUP BY ShipCountry
+ORDER BY AVG(Freight) DESC;
