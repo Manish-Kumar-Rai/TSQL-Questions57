@@ -1,4 +1,5 @@
 ------------------------------ Question (1 - 10)-------------------------------
+USE Northwind;
 
 -- 1. Which shippers do we have?
 
@@ -18,3 +19,16 @@ SELECT
 	FORMAT(HireDate,'yyyy-MM-dd') AS HireDate
 FROM dbo.Employees
 WHERE Title = 'Sales Representative';
+
+/*
+4. Now we’d like to see the same columns as above, but only for those
+employees that both have the title of Sales Representative, and also are
+in the United States.
+*/
+
+SELECT
+	FirstName,
+	LastName,
+	FORMAT(HireDate,'yyyy-MM-dd') AS HireDate
+FROM dbo.Employees
+WHERE Title = 'Sales Representative' AND Country = 'USA';
