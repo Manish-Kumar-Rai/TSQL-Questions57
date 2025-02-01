@@ -112,3 +112,36 @@ FROM dbo.Orders
 WHERE YEAR(OrderDate) = 2015
 GROUP BY ShipCountry
 ORDER BY AVG(Freight) DESC;
+
+/*
+27. 
+Another (incorrect) answer to the problem above is this:
+
+	Select Top 3
+	ShipCountry
+	,AverageFreight = avg(freight)
+	From Orders
+	Where
+	OrderDate between '1/1/2015' and '12/31/2015'
+	Group By ShipCountry
+	Order By AverageFreight desc;
+
+Notice when you run this, it gives Sweden as the ShipCountry with the
+third highest freight charges. However, this is wrong - it should be
+France.
+What is the OrderID of the order that the (incorrect) answer above is
+missing?
+*/
+
+/*
+Why is There a Difference?
+YEAR(OrderDate) = 2015 ensures that all records with any date in 2015 are included, 
+regardless of the time part.
+BETWEEN '1/1/2015' AND '12/31/2015' might miss orders on 12/31/2015 
+if they have a time component (e.g., '2015-12-31 23:59:59.997') because '12/31/2015' is implicitly converted 
+to '2015-12-31 00:00:00'.
+*/
+SELECT
+	OrderID
+FROM dbo.Orders
+WHERE OrderDate >= '1/1/2015' AND OrderDate < '1/1/2016';
