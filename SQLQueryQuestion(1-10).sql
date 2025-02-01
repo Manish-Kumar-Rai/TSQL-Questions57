@@ -100,3 +100,18 @@ SELECT
 	ShipCountry
 FROM dbo.Orders
 WHERE ShipCountry IN ('Brazil','Mexico','Argentina','Venezuela');
+
+/*
+10.For all the employees in the Employees table, show the FirstName,
+LastName, Title, and BirthDate. Order the results by BirthDate, so we
+have the oldest employees first.
+*/
+
+SELECT
+	FirstName,
+	LastName,
+	Title,
+	FORMAT(BirthDate,'yyyy-MM-dd') AS Birthdate,
+	YEAR(BirthDate) AS BirthYear
+FROM dbo.Employees
+ORDER BY YEAR(BirthDate) ASC;
