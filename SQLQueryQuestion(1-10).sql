@@ -32,3 +32,11 @@ SELECT
 	FORMAT(HireDate,'yyyy-MM-dd') AS HireDate
 FROM dbo.Employees
 WHERE Title = 'Sales Representative' AND Country = 'USA';
+
+/*
+5. Show all the orders placed by a specific employee. The EmployeeID for
+this Employee (Steven Buchanan) is 5.
+*/
+
+SELECT * FROM dbo.Orders
+WHERE EmployeeID = 5;
