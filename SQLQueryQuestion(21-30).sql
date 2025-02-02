@@ -182,3 +182,16 @@ JOIN dbo.OrderDetails AS OD
 JOIN dbo.Products AS P
 	ON OD.ProductID = P.ProductID
 ORDER BY O.OrderID,P.ProductID;
+
+/*
+30. There are some customers who have never actually placed an order.
+Show these customers.
+*/
+
+SELECT
+	C.CustomerID AS Customer_CustomersID,
+	O.CustomerID AS Orders_CustomersID
+FROM dbo.Orders	AS O
+RIGHT JOIN dbo.Customers AS C
+	ON O.CustomerID = C.CustomerID
+WHERE O.CustomerID IS NULL;
