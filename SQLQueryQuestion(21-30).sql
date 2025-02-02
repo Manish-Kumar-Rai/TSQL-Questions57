@@ -142,6 +142,25 @@ if they have a time component (e.g., '2015-12-31 23:59:59.997') because '12/31/2
 to '2015-12-31 00:00:00'.
 */
 SELECT
-	OrderID
+	OrderID,OrderDate
 FROM dbo.Orders
-WHERE OrderDate >= '1/1/2015' AND OrderDate < '1/1/2016';
+WHERE OrderDate >= '1/1/2015' AND OrderDate < '1/1/2016'
+ORDER BY OrderDate DESC;
+
+/*
+28. We're continuing to work on high freight charges. We now want to get
+the three ship countries with the highest average freight charges. But
+instead of filtering for a particular year, we want to use the last 12
+months of order data, using as the end date the last OrderDate in Orders.
+*/
+
+SELECT TOP 3
+    ShipCountry,
+    AVG(Freight) AS Avg_Freight
+FROM dbo.Orders
+WHERE OrderDate >= DATEADD(MONTH, -12, (SELECT MAX(OrderDate) FROM dbo.Orders)) 
+  AND OrderDate < (SELECT MAX(OrderDate) FROM dbo.Orders)
+GROUP BY ShipCountry
+ORDER BY AVG(Freight) DESC;
+
+
