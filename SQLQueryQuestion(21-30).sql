@@ -163,4 +163,22 @@ WHERE OrderDate >= DATEADD(MONTH, -12, (SELECT MAX(OrderDate) FROM dbo.Orders))
 GROUP BY ShipCountry
 ORDER BY AVG(Freight) DESC;
 
+/*
+29. We're doing inventory, and need to show information like the below, for
+all orders. Sort by OrderID and Product ID.
+*/
 
+SELECT
+	E.EmployeeID,
+	E.LastName,
+	O.OrderID,
+	P.ProductName,
+	OD.Quantity
+FROM dbo.Orders AS O
+JOIN dbo.Employees AS E
+	ON O.EmployeeID = E.EmployeeID
+JOIN dbo.OrderDetails AS OD
+	ON O.OrderID = OD.OrderID
+JOIN dbo.Products AS P
+	ON OD.ProductID = P.ProductID
+ORDER BY O.OrderID,P.ProductID;
